@@ -1,0 +1,2 @@
+### get user by login
+GET localhost:8080//users/octocat
