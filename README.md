@@ -35,3 +35,10 @@ pomocą Maven lub Gradle. Możesz wspierać się dowolnymi, łatwo dostępnymi t
 BD, biblioteki, frameworki).
 Pamiętaj o zastosowaniu dobrych praktyk programowania.
 Projekt umieść na dowolnym repozytorium i udostępnij nam link.
+
+
+-----------------------------------------
+Przyjęte założenia:
+
+- Jeżeli api github zwróci nam błąd, to zwracamy ten sam błąd w naszym api by przekazać dalej jak najdokładniejsze informację o tym co poszło nie tak
+- 
