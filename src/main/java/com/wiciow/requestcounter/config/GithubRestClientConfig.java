@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 
 @Configuration
-public class RestClientConfig {
+public class GithubRestClientConfig {
 
     @Value("${github.api.url}")
     private String githubApiUrl;
