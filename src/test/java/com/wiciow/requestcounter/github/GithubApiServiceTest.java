@@ -36,6 +36,7 @@ class GithubApiServiceTest {
 
   @Test
   void shouldGetGithubUser() {
+    //given
     String login = "octocat";
     wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/users/" + login))
         .willReturn(WireMock.aResponse()
@@ -55,9 +56,9 @@ class GithubApiServiceTest {
                 """
                 .formatted(login)
             )));
-
+    //when
     GithubUserResponseDTO result = testObj.getUser(login);
-
+    //then
     assertThat(result.id()).isEqualTo(1321L);
     assertThat(result.login()).isEqualTo(login);
     assertThat(result.name()).isEqualTo("The Octocat");
@@ -71,6 +72,7 @@ class GithubApiServiceTest {
 
   @Test
   void shouldThrowExceptionWithTheSameMessageAsFromApi_whenApiRespondsWithError() {
+    //given
     String login = "octocat";
     wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/users/" + login))
         .willReturn(WireMock.aResponse()
@@ -83,6 +85,7 @@ class GithubApiServiceTest {
                 """
             )));
 
+    //when-then
     RestClientException result = assertThrows(RestClientException.class,
         () -> testObj.getUser(login));
 
