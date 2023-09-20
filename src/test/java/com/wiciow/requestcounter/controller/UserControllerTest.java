@@ -37,7 +37,7 @@ class UserControllerTest {
     String avatarUrl = easyRandom.nextObject(String.class);
     String createdAt = easyRandom.nextObject(String.class);
     BigDecimal calculations = easyRandom.nextObject(BigDecimal.class);
-    //when
+
     UserResponseDTO userResponseDTO = UserResponseDTO.builder()
         .id(id)
         .login(login)
@@ -47,10 +47,8 @@ class UserControllerTest {
         .createdAt(createdAt)
         .calculations(calculations)
         .build();
-
+    //when-then
     when(userService.getUser(login)).thenReturn(userResponseDTO);
-    //then
-
     mockMvc.perform(get("/users/{login}", login)
             .contentType("application/json"))
         .andExpect(status().isOk())
