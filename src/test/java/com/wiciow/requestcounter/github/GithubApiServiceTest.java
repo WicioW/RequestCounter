@@ -2,6 +2,7 @@ package com.wiciow.requestcounter.github;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
+import com.wiciow.requestcounter.exception.GithubApiException;
 import com.wiciow.requestcounter.github.dto.GithubUserResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -71,7 +72,7 @@ class GithubApiServiceTest {
   }
 
   @Test
-  void shouldThrowExceptionWithTheSameMessageAsFromApi_whenApiRespondsWithError() {
+  void shouldThrowGitHubApiExceptionWithTheSameMessageAsFromApi_whenApiRespondsWithException() {
     //given
     String login = "octocat";
     wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/users/" + login))
@@ -86,10 +87,9 @@ class GithubApiServiceTest {
             )));
 
     //when-then
-    RestClientException result = assertThrows(RestClientException.class,
+    GithubApiException result = assertThrows(GithubApiException.class,
         () -> testObj.getUser(login));
 
-    assertThat(result.getMessage()).contains("500 Server Error");
     assertThat(result.getMessage()).contains("API error - contact support");
   }
 

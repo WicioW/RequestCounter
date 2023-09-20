@@ -1,3 +1,6 @@
 ### get user by login
 GET  https://api.github.com/users/octocat
 
+### get user by login
+GET  https://api.github.com/users/1
+

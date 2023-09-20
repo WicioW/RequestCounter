@@ -1,2 +1,6 @@
 ### get user by login
-GET localhost:8080//users/octocat
+GET localhost:8080/users/octocat
+
+
+### get user by login
+GET localhost:8080/users/1
