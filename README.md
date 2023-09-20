@@ -42,3 +42,8 @@ Przyjęte założenia:
 
 - Jeżeli api github zwróci nam błąd, to zwracamy ten sam błąd w naszym api by przekazać dalej jak najdokładniejsze informację o tym co poszło nie tak
 - Zakładam, że "calculations" oblicza jakiś score użytkownika, więc jeżeli nie ma followersów to nie ma sensu dzielić przez 0, więc zwracam 0
+
+
+Proponowane dalsze usprawnienia:
+- dodanie retry lub circuit breaker do wywołań api githuba
+- dodanie cache do wywołań api githuba

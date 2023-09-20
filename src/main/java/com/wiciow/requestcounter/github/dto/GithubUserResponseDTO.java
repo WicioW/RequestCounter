@@ -1,7 +1,9 @@
 package com.wiciow.requestcounter.github.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 
+@Builder
 public record GithubUserResponseDTO(
         Long id,
         String login,
