@@ -16,13 +16,9 @@ public class UserService {
   private final GithubApiService githubApiService;
   private final UserCalculationsService userCalculationsService;
   private final UserResponseDTOMapper userResponseDTOMapper;
-  private final UserCreator userCreator;
-  private final UserUpdater userUpdater;
 
   public UserResponseDTO getUser(@NonNull String login) {
     GithubUserResponseDTO user = githubApiService.getUser(login);
-    userCreator.createIfNotFoundByLogin(login);
-    userUpdater.incrementCounterByLogin(login);
     BigDecimal userCalculations = userCalculationsService.getUserCalculations(user);
     return userResponseDTOMapper.mapToResponse(user, userCalculations);
   }

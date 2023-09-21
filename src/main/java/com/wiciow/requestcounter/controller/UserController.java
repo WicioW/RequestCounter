@@ -1,5 +1,6 @@
 package com.wiciow.requestcounter.controller;
 
+import com.wiciow.requestcounter.annotation.UpdateUserRequestCounter;
 import com.wiciow.requestcounter.controller.dto.UserResponseDTO;
 import com.wiciow.requestcounter.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ public class UserController {
 
   private final UserService userService;
 
+    @UpdateUserRequestCounter
     @GetMapping("/{login}")
     public UserResponseDTO getUser(@PathVariable String login) {
         return userService.getUser(login);
