@@ -1,4 +1,8 @@
 package com.wiciow.requestcounter.repository;
 
-public class UserRepository {
+import com.wiciow.requestcounter.model.User;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface UserRepository extends MongoRepository<User, String> {
+
 }
