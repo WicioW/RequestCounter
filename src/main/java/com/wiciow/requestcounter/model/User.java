@@ -1,6 +1,7 @@
 package com.wiciow.requestcounter.model;
 
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     @Id
     private String login;
-    private int requestCount;
+    @Default
+    private Integer requestCount = 0;
 
 }
