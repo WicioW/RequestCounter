@@ -2,6 +2,7 @@ package com.wiciow.requestcounter.repository;
 
 import com.wiciow.requestcounter.MongoTestContainerBase;
 import com.wiciow.requestcounter.model.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -15,6 +16,11 @@ class UserRepositoryTest extends MongoTestContainerBase {
 
   @Autowired
   private UserRepository testObj;
+
+  @BeforeEach
+  void setUp(){
+    testObj.deleteAll();
+  }
 
   @Test
   void testFindByLogin(){
