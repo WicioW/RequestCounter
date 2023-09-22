@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @MockitoSettings
@@ -26,6 +27,10 @@ class UserServiceTest {
   private UserCalculationsService userCalculationsService;
   @Mock
   private UserResponseDTOMapper userResponseDTOMapper;
+  @Mock
+  private UserCreator userCreator;
+  @Mock
+  private UserUpdater userUpdater;
 
   @Test
   void testGetUser() {
@@ -44,6 +49,8 @@ class UserServiceTest {
     var result = testObj.getUser(login);
     // then
     assertThat(result).isEqualTo(userResponse);
+    verify(userCreator).createIfNotFoundByLogin(login);
+    verify(userUpdater).incrementCounterByLogin(login);
   }
 
 }

@@ -21,10 +21,14 @@ public class UserService {
 
   public UserResponseDTO getUser(@NonNull String login) {
     GithubUserResponseDTO user = githubApiService.getUser(login);
-    userCreator.createIfNotFoundByLogin(login);
-    userUpdater.incrementCounterByLogin(login);
+    incrementCounterForUserWithLogin(login);
     BigDecimal userCalculations = userCalculationsService.getUserCalculations(user);
     return userResponseDTOMapper.mapToResponse(user, userCalculations);
+  }
+
+  private void incrementCounterForUserWithLogin(String login) {
+    userCreator.createIfNotFoundByLogin(login);
+    userUpdater.incrementCounterByLogin(login);
   }
 
 }
