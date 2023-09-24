@@ -57,8 +57,15 @@ Projekt umieść na dowolnym repozytorium i udostępnij nam link.
 - dodanie cache do wywołań api githuba
 - aktualizacja wartości `REQUEST_COUNT` w bazie danych zrobiona asynchronicznie. np eventem
 
-# English
+## Dodatkowe informacje
+### Lokalny development
+1. Baza danych - Na potrzeby lokalnego developmentu wystarczy uruchomić `docker-compose up`
+2. Rest API - w paczce `http` są pliki do testowania api. Można je zaimportować do postmana lub korzystać z nich w IDE Intellij IDEA.
 
+### Testy
+1. Dodane są testy integracyjne bazy danych korzystające z `testcontainers`. By je uruchomić trzeba mieć zainstalowanego Dockera.
+
+# English
 ## Task Description
 
 Recruitment Backend Task
@@ -114,3 +121,10 @@ link.
 - Add retry and/or circuit breaker for GitHub API calls.
 - Implement caching for GitHub API calls.
 - Update the value of REQUEST_COUNT in the database asynchronously, for example, using events.
+
+## Additional Information
+### Local Development
+1. Database - For local development purposes, simply run `docker-compose up`.
+2. Rest API - In the `http` package, there are files for testing the API. You can import them into Postman or use them in the IntelliJ IDEA IDE.
+### Tests
+1. There are integration tests for the database using `testcontainers`. To run them, you need to have Docker installed.
