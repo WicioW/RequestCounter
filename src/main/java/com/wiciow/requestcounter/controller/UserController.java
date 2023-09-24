@@ -15,8 +15,8 @@ public class UserController {
 
   private final UserService userService;
 
-    @GetMapping("/{login}")
-    public UserResponseDTO getUser(@PathVariable String login) {
-        return userService.getUser(login);
-    }
+  @GetMapping("/{login}")
+  public UserResponseDTO getUser(@PathVariable String login) {
+    return userService.getUser(login);
+  }
 }

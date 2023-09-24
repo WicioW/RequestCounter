@@ -1,22 +1,23 @@
 package com.wiciow.requestcounter.github;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import com.wiciow.requestcounter.exception.GithubApiException;
 import com.wiciow.requestcounter.github.dto.GithubUserResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.springframework.web.client.RestClientException;
-
-import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -71,13 +72,14 @@ class GithubApiServiceTest {
     assertThat(result.type()).isEqualTo("User");
   }
 
-  @Test
-  void shouldThrowGitHubApiExceptionWithTheSameMessageAsFromApi_whenApiRespondsWithException() {
+  @ParameterizedTest
+  @ValueSource(ints = {400, 401, 403, 404, 422, 500, 502, 503, 504})
+  void shouldThrowGitHubApiExceptionWithTheSameMessageAsFromApi_whenApiRespondsWithException(int statusCode) {
     //given
     String login = "octocat";
     wireMockServer.stubFor(WireMock.get(WireMock.urlEqualTo("/users/" + login))
         .willReturn(WireMock.aResponse()
-            .withStatus(500)
+            .withStatus(statusCode)
             .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
             .withBody("""
                 {
