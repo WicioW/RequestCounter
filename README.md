@@ -1,17 +1,18 @@
-# Polish (English version below)
+# Polish 
+(English version below)
 
 ## Treść zadania
 
 Zadanie rekrutacyjne backend
 
-Stwórz prosty RESTowy serwis, który zwróci informacje
-• Identyfikator
-• Login
-• Nazwa
-• Typ
-• Url do avatara
-• Data stworzenia
-• Obliczenia
+Stwórz prosty RESTowy serwis, który zwróci informacje:  
+• Identyfikator  
+• Login  
+• Nazwa  
+• Typ  
+• Url do avatara  
+• Data stworzenia  
+• Obliczenia  
 API serwisu powinno wyglądać jak poniżej:
 
 `GET /users/{login}`
@@ -31,10 +32,12 @@ API serwisu powinno wyglądać jak poniżej:
 
 Serwis powinien pobrać dane z https://api.github.com/users/{login} (np.
 https://api.github.com/users/octocat) i przekazać je w API. W polu calculations powinien być
-zwrócony wynik działania 6 / liczba_followers * (2 + liczba_public_repos).
+zwrócony wynik działania `6 / liczba_followers * (2 + liczba_public_repos)`.
+
 Serwis powinien zapisywać w bazie danych liczbę wywołań API dla każdego loginu.
 Baza danych powinna zawierać dwie kolumny: LOGIN oraz REQUEST_COUNT. Dla każdego wywołania
 usługi wartość REQUEST_COUNT powinna być zwiększana o jeden.
+
 Serwis powinien być zaimplementowany w Java. Projekt powinien być możliwy do zbudowania za
 pomocą Maven lub Gradle. Możesz wspierać się dowolnymi, łatwo dostępnymi technologiami (silniki
 BD, biblioteki, frameworki).
@@ -60,18 +63,18 @@ Projekt umieść na dowolnym repozytorium i udostępnij nam link.
 
 Recruitment Backend Task
 
-Create a simple RESTful service that will return information about:
-• Identifier
-• Login
-• Name
-• Type
-• Avatar URL
-• Creation date
-• Calculations
+Create a simple RESTful service that will return information about:  
+• Identifier  
+• Login  
+• Name  
+• Type  
+• Avatar URL  
+• Creation date  
+• Calculations  
 
 The API of the service should look as follows:
 
-GET /users/{login}
+`GET /users/{login}`
 
 ```json
 {
@@ -87,8 +90,8 @@ GET /users/{login}
 
 The service should retrieve data from https://api.github.com/users/{login} (
 e.g., https://api.github.com/users/octocat) and provide it in the API response. The "calculations"
-field should return the result of the operation 6 / number_of_followers * (2 +
-number_of_public_repos).
+field should return the result of the operation `6 / number_of_followers * (2 +
+number_of_public_repos)`.
 
 The service should also record the number of API calls for each login in the database. The database
 should have two columns: LOGIN and REQUEST_COUNT. For each service call, the REQUEST_COUNT value
