@@ -8,11 +8,12 @@ import org.springframework.web.client.RestClient;
 @Configuration
 public class GithubRestClientConfig {
 
-    @Value("${github.api.url}")
-    private String githubApiUrl;
+  @Value("${github.api.url}")
+  private String githubApiUrl;
 
-    @Bean
-    RestClient restClient(RestClient.Builder builder){
-        return builder.baseUrl(githubApiUrl).build();
-    }
+  @Bean
+  RestClient restClient(RestClient.Builder builder) {
+    return builder.baseUrl(githubApiUrl)
+        .build();
+  }
 }

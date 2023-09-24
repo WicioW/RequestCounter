@@ -2,9 +2,9 @@ package com.wiciow.requestcounter.service;
 
 import com.wiciow.requestcounter.model.User;
 import com.wiciow.requestcounter.repository.UserRepository;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor

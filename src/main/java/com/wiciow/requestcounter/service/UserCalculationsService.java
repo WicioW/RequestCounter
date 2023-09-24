@@ -1,16 +1,16 @@
 package com.wiciow.requestcounter.service;
 
 import com.wiciow.requestcounter.github.dto.GithubUserResponseDTO;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserCalculationsService {
 
   public BigDecimal getUserCalculations(@NonNull GithubUserResponseDTO user) {
-    if(user.followers() == 0) {
+    if (user.followers() == 0) {
       return toBigDecimal(0);
     }
     BigDecimal firstPart = BigDecimal.valueOf(6)
@@ -20,8 +20,9 @@ public class UserCalculationsService {
     return firstPart.multiply(secondPart);
   }
 
-  private BigDecimal toBigDecimal(Integer integer){
-    return BigDecimal.valueOf(integer).setScale(2, RoundingMode.HALF_UP);
+  private BigDecimal toBigDecimal(Integer integer) {
+    return BigDecimal.valueOf(integer)
+        .setScale(2, RoundingMode.HALF_UP);
   }
 
 }

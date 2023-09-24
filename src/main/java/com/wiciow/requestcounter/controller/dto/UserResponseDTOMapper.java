@@ -1,15 +1,15 @@
 package com.wiciow.requestcounter.controller.dto;
 
 import com.wiciow.requestcounter.github.dto.GithubUserResponseDTO;
+import java.math.BigDecimal;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
-import java.math.BigDecimal;
 
 @Component
 public class UserResponseDTOMapper {
 
   public UserResponseDTO mapToResponse(@NonNull GithubUserResponseDTO user,
-                                               BigDecimal userCalculations) {
+                                       BigDecimal userCalculations) {
     return UserResponseDTO.builder()
         .id(user.id())
         .login(user.login())

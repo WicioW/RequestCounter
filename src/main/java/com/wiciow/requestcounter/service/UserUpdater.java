@@ -14,9 +14,10 @@ public class UserUpdater {
 
   private final MongoTemplate mongoTemplate;
 
-  public void incrementCounterByLogin(String login){
+  public void incrementCounterByLogin(String login) {
     mongoTemplate.updateFirst(
-        Query.query(Criteria.where("login").is(login)),
+        Query.query(Criteria.where("login")
+            .is(login)),
         new Update().inc("requestCount", 1),
         User.class
     );

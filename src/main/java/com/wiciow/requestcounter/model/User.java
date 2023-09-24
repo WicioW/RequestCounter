@@ -10,9 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Builder
 public class User {
-    @Id
-    private String login;
-    @Default
-    private Integer requestCount = 0;
+
+  @Id
+  private String login;
+  @Default
+  private Integer requestCount = 0;
 
 }

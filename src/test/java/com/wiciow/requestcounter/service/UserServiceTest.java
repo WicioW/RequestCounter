@@ -1,19 +1,18 @@
 package com.wiciow.requestcounter.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.wiciow.requestcounter.controller.dto.UserResponseDTO;
 import com.wiciow.requestcounter.controller.dto.UserResponseDTOMapper;
 import com.wiciow.requestcounter.github.GithubApiService;
 import com.wiciow.requestcounter.github.dto.GithubUserResponseDTO;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoSettings;
-
-import java.math.BigDecimal;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @MockitoSettings
 class UserServiceTest {

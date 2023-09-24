@@ -1,12 +1,11 @@
 package com.wiciow.requestcounter.controller.dto;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import com.wiciow.requestcounter.github.dto.GithubUserResponseDTO;
+import java.math.BigDecimal;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class UserResponseDTOMapperTest {
 
@@ -15,7 +14,7 @@ class UserResponseDTOMapperTest {
   private final EasyRandom easyRandom = new EasyRandom();
 
   @Test
-  void shouldReturnObjectWithFilledFields_whenProvidedFieldsAreNotNull(){
+  void shouldReturnObjectWithFilledFields_whenProvidedFieldsAreNotNull() {
     //given
     GithubUserResponseDTO user = GithubUserResponseDTO.builder()
         .id(easyRandom.nextLong())
@@ -40,9 +39,10 @@ class UserResponseDTOMapperTest {
   }
 
   @Test
-  void shouldReturnObjectWithNullFields_whenProvidedFieldsAreNull(){
+  void shouldReturnObjectWithNullFields_whenProvidedFieldsAreNull() {
     //given
-    GithubUserResponseDTO user = GithubUserResponseDTO.builder().build();
+    GithubUserResponseDTO user = GithubUserResponseDTO.builder()
+        .build();
     //when
     UserResponseDTO result = testObj.mapToResponse(user, null);
     //then

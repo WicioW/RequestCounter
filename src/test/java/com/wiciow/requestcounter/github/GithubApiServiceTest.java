@@ -1,5 +1,9 @@
 package com.wiciow.requestcounter.github;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import com.wiciow.requestcounter.exception.GithubApiException;
@@ -14,10 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-
-import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc

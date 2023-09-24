@@ -1,8 +1,8 @@
 package com.wiciow.requestcounter.repository;
 
 import com.wiciow.requestcounter.model.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
