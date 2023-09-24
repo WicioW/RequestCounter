@@ -28,7 +28,7 @@ class UserControllerTest {
   private final EasyRandom easyRandom = new EasyRandom();
 
   @Test
-  void testGetUser() throws Exception {
+  void shouldReturnUser_whenLoginIsProvided() throws Exception {
     //given
     long id = easyRandom.nextLong();
     String login = easyRandom.nextObject(String.class);
@@ -59,5 +59,32 @@ class UserControllerTest {
         .andExpect(jsonPath("$.avatarUrl").value(avatarUrl))
         .andExpect(jsonPath("$.createdAt").value(createdAt))
         .andExpect(jsonPath("$.calculations").value(calculations));
+  }
+
+  @Test
+  void shouldReturn404_whenUserLoginIsMissing() throws Exception {
+    //given
+    long id = easyRandom.nextLong();
+    String login = easyRandom.nextObject(String.class);
+    String name = easyRandom.nextObject(String.class);
+    String type = easyRandom.nextObject(String.class);
+    String avatarUrl = easyRandom.nextObject(String.class);
+    String createdAt = easyRandom.nextObject(String.class);
+    BigDecimal calculations = easyRandom.nextObject(BigDecimal.class);
+
+    UserResponseDTO userResponseDTO = UserResponseDTO.builder()
+        .id(id)
+        .login(login)
+        .name(name)
+        .type(type)
+        .avatarUrl(avatarUrl)
+        .createdAt(createdAt)
+        .calculations(calculations)
+        .build();
+    //when-then
+    when(userService.getUser(login)).thenReturn(userResponseDTO);
+    mockMvc.perform(get("/users/")
+            .contentType("application/json"))
+        .andExpect(status().isNotFound());
   }
 }
