@@ -16,4 +16,11 @@ public class User {
   @Default
   private Integer requestCount = 0;
 
+  public String toLogString() {
+    return """
+        User{
+           login='%s'
+        }
+        """.formatted(login);
+  }
 }
