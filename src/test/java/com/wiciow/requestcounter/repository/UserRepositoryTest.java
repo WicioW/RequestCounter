@@ -23,7 +23,7 @@ class UserRepositoryTest extends MongoTestContainerBase {
   }
 
   @Test
-  void testFindByLogin(){
+  void shouldReturnOptionalUser_whenUserIsInDatabase(){
     //given
     String login = "Wn5u4";
     User user = User.builder()
@@ -37,4 +37,15 @@ class UserRepositoryTest extends MongoTestContainerBase {
     assertThat(result).isPresent();
     assertThat(result.get()).usingRecursiveComparison().isEqualTo(user);
   }
+
+  @Test
+  void shouldReturnOptionalEmpty_whenUserIsInDatabase(){
+    //given
+    String login = "Wn5u4";
+    //when
+    Optional<User> result = testObj.findByLogin(login);
+    //then
+    assertThat(result).isEmpty();
+  }
+
 }
